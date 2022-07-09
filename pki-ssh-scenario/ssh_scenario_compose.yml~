@@ -1,0 +1,23 @@
+services:
+  ssh_server:
+    image: ssh-server
+    hostname: ssh-server
+    name: ssh-server
+    ports:
+      - '22100:22'
+    networks:
+      - pki-net0
+  ssh_client:
+    image: ssh-client
+    entrypoint: ["sleep", "10000000000000"]
+    hostname: ssh-client
+    name: ssh-client
+    ports:
+      - '22200:22'
+    networks:
+      - pki-net0
+networks:
+  pki-net0:
+      ipam:
+        driver: default
+      
