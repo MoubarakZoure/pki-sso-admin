@@ -1,0 +1,24 @@
+services:
+  apache_server:
+    image: ubuntu:22.04
+    hostname: apache-server
+    container_name: apache-server
+    entrypoint: ["sleep", "10000000000000"]
+    ports:
+      - '8080:80'
+    networks:
+      - pki-net1
+  curl_client:
+    image: curlimages/curl
+    entrypoint: ["sleep", "10000000000000"]
+    hostname: apache-client
+    container_name: apache-client
+    ports:
+      - '1111:22'
+    networks:
+      - pki-net1
+networks:
+  pki-net1:
+      ipam:
+        driver: default
+      
