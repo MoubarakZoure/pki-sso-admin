@@ -1,1 +1,10 @@
 ssh alice@localhost -p 22000
+ docker compose -f ssh_scenario_compose.yml up --detach
+docker compose -f ssh_scenario_compose.yml down
+## Connexion en utilisant la clé privé
+ssh -i /opt/alicekeys/private_key_rsa alice@ssh-server
+## reload ssh server
+/etc/init.d/ssh reload
+
+## GEN SSH KEY
+ssh-keygen -t rsa
